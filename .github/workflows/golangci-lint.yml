@@ -20,7 +20,7 @@ jobs:
       - name: Install libraries
         run: |
           sudo apt-get update
-          sudo apt-get install -y opencl-headers
+          sudo apt-get install -y opencl-headers=3.0~2020.12.18-1
       - name: Run tests
         run: go test -race ./...
       - name: golangci-lint
