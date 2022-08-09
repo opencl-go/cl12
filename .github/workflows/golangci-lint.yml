@@ -11,7 +11,7 @@ permissions:
 jobs:
   golangci:
     name: lint
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/setup-go@v3
         with:
@@ -21,7 +21,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt list -a opencl-headers
-          sudo apt-get install -y opencl-headers=3.0
+          sudo apt-get install -y opencl-headers
       - name: Run tests
         run: go test -race ./...
       - name: golangci-lint
