@@ -73,139 +73,141 @@ func DeviceIDs(platformID PlatformID, deviceType DeviceTypeFlags) ([]DeviceID, e
 type DeviceInfoName C.cl_device_info
 
 const (
-	// DeviceAddressBits specify the default compute device address space size of the global address space specified
+	// DeviceAddressBitsInfo specify the default compute device address space size of the global address space specified
 	// as an unsigned integer value in bits. Currently supported values are 32 or 64 bits.
 	//
 	// Returned type: uint
-	DeviceAddressBits DeviceInfoName = C.CL_DEVICE_ADDRESS_BITS
-	// DeviceAvailable is true if the device is available and false otherwise. A device is considered to be
+	DeviceAddressBitsInfo DeviceInfoName = C.CL_DEVICE_ADDRESS_BITS
+	// DeviceAvailableInfo is true if the device is available and false otherwise. A device is considered to be
 	// available if the device can be expected to successfully execute commands enqueued to the device.
 	//
 	// Returned type: Bool
-	DeviceAvailable DeviceInfoName = C.CL_DEVICE_AVAILABLE
-	// DeviceBuiltInKernels represents a semicolon separated list of built-in kernels supported by the device.
+	DeviceAvailableInfo DeviceInfoName = C.CL_DEVICE_AVAILABLE
+	// DeviceBuiltInKernelsInfo represents a semicolon separated list of built-in kernels supported by the device.
 	// An empty string is returned if no built-in kernels are supported by the device.
 	//
 	// Returned type: string
 	// Since: 1.2
-	DeviceBuiltInKernels DeviceInfoName = C.CL_DEVICE_BUILT_IN_KERNELS
-	// DeviceCompilerAvailable is False if the implementation does not have a compiler available to compile the
+	DeviceBuiltInKernelsInfo DeviceInfoName = C.CL_DEVICE_BUILT_IN_KERNELS
+	// DeviceCompilerAvailableInfo is False if the implementation does not have a compiler available to compile the
 	// program source. It is True if the compiler is available.
 	//
 	// This can be False for the embedded platform profile only.
 	//
 	// Returned type: Bool
-	DeviceCompilerAvailable DeviceInfoName = C.CL_DEVICE_COMPILER_AVAILABLE
-	// DeviceDoubleFpConfig describes double precision floating-point capability of the OpenCL device.
+	DeviceCompilerAvailableInfo DeviceInfoName = C.CL_DEVICE_COMPILER_AVAILABLE
+	// DeviceDoubleFpConfigInfo describes double precision floating-point capability of the OpenCL device.
 	// This is a bit-field.
 	//
 	// Returned type: DeviceFpConfigFlags
 	// Since: 1.2
-	DeviceDoubleFpConfig DeviceInfoName = C.CL_DEVICE_DOUBLE_FP_CONFIG
-	// DeviceEndianLittle is True if the OpenCL device is a little endian device and False otherwise.
+	DeviceDoubleFpConfigInfo DeviceInfoName = C.CL_DEVICE_DOUBLE_FP_CONFIG
+	// DeviceEndianLittleInfo is True if the OpenCL device is a little endian device and False otherwise.
 	//
 	// Returned type: Bool
-	DeviceEndianLittle DeviceInfoName = C.CL_DEVICE_ENDIAN_LITTLE
-	// DeviceErrorCorrectionSupport is True if the device implements error correction for all accesses to compute
+	DeviceEndianLittleInfo DeviceInfoName = C.CL_DEVICE_ENDIAN_LITTLE
+	// DeviceErrorCorrectionSupportInfo is True if the device implements error correction for all accesses to compute
 	// device memory (global and constant). Is False if the device does not implement such error correction.
 	//
 	// Returned type: Bool
-	DeviceErrorCorrectionSupport DeviceInfoName = C.CL_DEVICE_ERROR_CORRECTION_SUPPORT
-	// DeviceExecutionCapabilities describes the execution capabilities of the device. This is a bit-field.
+	DeviceErrorCorrectionSupportInfo DeviceInfoName = C.CL_DEVICE_ERROR_CORRECTION_SUPPORT
+	// DeviceExecutionCapabilitiesInfo describes the execution capabilities of the device. This is a bit-field.
 	//
 	// The mandated minimum capability is ExecKernel.
 	//
 	// Returned type: DeviceExecCapabilitiesFlags
-	DeviceExecutionCapabilities DeviceInfoName = C.CL_DEVICE_EXECUTION_CAPABILITIES
-	// DeviceExtensions returns a space separated list of extension names (the extension names themselves do not
+	DeviceExecutionCapabilitiesInfo DeviceInfoName = C.CL_DEVICE_EXECUTION_CAPABILITIES
+	// DeviceExtensionsInfo returns a space separated list of extension names (the extension names themselves do not
 	// contain any spaces) supported by the device. The list of extension names may include Khronos approved
 	// extension names and vendor specified extension names.
 	//
 	// Returned type: string
-	DeviceExtensions DeviceInfoName = C.CL_DEVICE_EXTENSIONS
-	// DeviceGlobalMemCacheSize returns the size of global memory cache in bytes.
+	DeviceExtensionsInfo DeviceInfoName = C.CL_DEVICE_EXTENSIONS
+	// DeviceGlobalMemCacheSizeInfo returns the size of global memory cache in bytes.
 	//
 	// Returned type: Ulong
-	DeviceGlobalMemCacheSize DeviceInfoName = C.CL_DEVICE_GLOBAL_MEM_CACHE_SIZE
-	// DeviceGlobalMemCacheType represents the type of global memory cache supported.
+	DeviceGlobalMemCacheSizeInfo DeviceInfoName = C.CL_DEVICE_GLOBAL_MEM_CACHE_SIZE
+	// DeviceGlobalMemCacheTypeInfo represents the type of global memory cache supported.
 	//
 	// Returned type: DeviceMemCacheTypeEnum
-	DeviceGlobalMemCacheType DeviceInfoName = C.CL_DEVICE_GLOBAL_MEM_CACHE_TYPE
-	// DeviceGlobalMemCachelineSize is the size of global memory cache line in bytes.
+	DeviceGlobalMemCacheTypeInfo DeviceInfoName = C.CL_DEVICE_GLOBAL_MEM_CACHE_TYPE
+	// DeviceGlobalMemCachelineSizeInfo is the size of global memory cache line in bytes.
 	//
 	// Returned type: Uint
-	DeviceGlobalMemCachelineSize DeviceInfoName = C.CL_DEVICE_GLOBAL_MEM_CACHELINE_SIZE
-	// DeviceGlobalMemSize is the size of global device memory in bytes.
+	DeviceGlobalMemCachelineSizeInfo DeviceInfoName = C.CL_DEVICE_GLOBAL_MEM_CACHELINE_SIZE
+	// DeviceGlobalMemSizeInfo is the size of global device memory in bytes.
 	//
 	// Returned type: Ulong
-	DeviceGlobalMemSize DeviceInfoName = C.CL_DEVICE_GLOBAL_MEM_SIZE
-	// DeviceHostUnifiedMemory is True if the device and the host have a unified memory subsystem and is
+	DeviceGlobalMemSizeInfo DeviceInfoName = C.CL_DEVICE_GLOBAL_MEM_SIZE
+	// DeviceHostUnifiedMemoryInfo is True if the device and the host have a unified memory subsystem and is
 	// False otherwise.
 	//
 	// Returned type: Bool
-	DeviceHostUnifiedMemory DeviceInfoName = C.CL_DEVICE_HOST_UNIFIED_MEMORY
-	// DeviceImage2dMaxHeight is the maximum height of 2D image in pixels.
-	// The minimum value is 16384 if DeviceImageSupport is True, the value is 0 otherwise.
+	DeviceHostUnifiedMemoryInfo DeviceInfoName = C.CL_DEVICE_HOST_UNIFIED_MEMORY
+	// DeviceImage2dMaxHeightInfo is the maximum height of 2D image in pixels.
+	// The minimum value is 16384 if DeviceImageSupportInfo is True, the value is 0 otherwise.
 	//
 	// Returned type: uintptr
-	DeviceImage2dMaxHeight DeviceInfoName = C.CL_DEVICE_IMAGE2D_MAX_HEIGHT
-	// DeviceImage2dMaxWidth is the maximum width of 2D image or 1D image not created from a buffer object in pixels.
-	// The minimum value is 16384 if DeviceImageSupport is True, the value is 0 otherwise.
+	DeviceImage2dMaxHeightInfo DeviceInfoName = C.CL_DEVICE_IMAGE2D_MAX_HEIGHT
+	// DeviceImage2dMaxWidthInfo is the maximum width of 2D image or 1D image not created from a buffer object in pixels.
+	// The minimum value is 16384 if DeviceImageSupportInfo is True, the value is 0 otherwise.
 	//
 	// Returned type: uintptr
-	DeviceImage2dMaxWidth DeviceInfoName = C.CL_DEVICE_IMAGE2D_MAX_WIDTH
-	// DeviceImage3dMaxDepth is the maximum depth of 3D image in pixels.
-	// The minimum value is 2048 if DeviceImageSupport is True, the value is 0 otherwise.
+	DeviceImage2dMaxWidthInfo DeviceInfoName = C.CL_DEVICE_IMAGE2D_MAX_WIDTH
+	// DeviceImage3dMaxDepthInfo is the maximum depth of 3D image in pixels.
+	// The minimum value is 2048 if DeviceImageSupportInfo is True, the value is 0 otherwise.
 	//
 	// Returned type: uintptr
-	DeviceImage3dMaxDepth DeviceInfoName = C.CL_DEVICE_IMAGE3D_MAX_DEPTH
-	// DeviceImage3dMaxHeight is the maximum height of 3D image in pixels.
-	// The minimum value is 2048 if DeviceImageSupport is True, the value is 0 otherwise.
+	DeviceImage3dMaxDepthInfo DeviceInfoName = C.CL_DEVICE_IMAGE3D_MAX_DEPTH
+	// DeviceImage3dMaxHeightInfo is the maximum height of 3D image in pixels.
+	// The minimum value is 2048 if DeviceImageSupportInfo is True, the value is 0 otherwise.
 	//
 	// Returned type: uintptr
-	DeviceImage3dMaxHeight DeviceInfoName = C.CL_DEVICE_IMAGE3D_MAX_HEIGHT
-	// DeviceImage3dMaxWidth is the maximum width of 3D image in pixels.
-	// The minimum value is 2048 if DeviceImageSupport is True, the value is 0 otherwise.
+	DeviceImage3dMaxHeightInfo DeviceInfoName = C.CL_DEVICE_IMAGE3D_MAX_HEIGHT
+	// DeviceImage3dMaxWidthInfo is the maximum width of 3D image in pixels.
+	// The minimum value is 2048 if DeviceImageSupportInfo is True, the value is 0 otherwise.
 	//
 	// Returned type: uintptr
-	DeviceImage3dMaxWidth DeviceInfoName = C.CL_DEVICE_IMAGE3D_MAX_WIDTH
-	// DeviceImageMaxArraySize is the maximum number of images in a 1D or 2D image array.
-	// The minimum value is 2048 if DeviceImageSupport is True, the value is 0 otherwise.
-	//
-	// Returned type: uintptr
-	// Since: 1.2
-	DeviceImageMaxArraySize DeviceInfoName = C.CL_DEVICE_IMAGE_MAX_ARRAY_SIZE
-	// DeviceImageMaxBufferSize is the maximum number of pixels for a 1D image created from a buffer object.
-	// The minimum value is 65536 if DeviceImageSupport is True, the value is 0 otherwise.
+	DeviceImage3dMaxWidthInfo DeviceInfoName = C.CL_DEVICE_IMAGE3D_MAX_WIDTH
+	// DeviceImageMaxArraySizeInfo is the maximum number of images in a 1D or 2D image array.
+	// The minimum value is 2048 if DeviceImageSupportInfo is True, the value is 0 otherwise.
 	//
 	// Returned type: uintptr
 	// Since: 1.2
-	DeviceImageMaxBufferSize DeviceInfoName = C.CL_DEVICE_IMAGE_MAX_BUFFER_SIZE
-	// DeviceImageSupport is True if images are supported by the OpenCL device and False otherwise.
-	DeviceImageSupport DeviceInfoName = C.CL_DEVICE_IMAGE_SUPPORT
-	// DeviceLinkerAvailable is False if the implementation does not have a linker available.
+	DeviceImageMaxArraySizeInfo DeviceInfoName = C.CL_DEVICE_IMAGE_MAX_ARRAY_SIZE
+	// DeviceImageMaxBufferSizeInfo is the maximum number of pixels for a 1D image created from a buffer object.
+	// The minimum value is 65536 if DeviceImageSupportInfo is True, the value is 0 otherwise.
+	//
+	// Returned type: uintptr
+	// Since: 1.2
+	DeviceImageMaxBufferSizeInfo DeviceInfoName = C.CL_DEVICE_IMAGE_MAX_BUFFER_SIZE
+	// DeviceImageSupportInfo is True if images are supported by the OpenCL device and False otherwise.
+	//
+	// Returned type: Bool
+	DeviceImageSupportInfo DeviceInfoName = C.CL_DEVICE_IMAGE_SUPPORT
+	// DeviceLinkerAvailableInfo is False if the implementation does not have a linker available.
 	// It is True if the linker is available.
 	//
 	// This can be False for the embedded platform profile only.
-	// This must be True if DeviceCompilerAvailable is True.
+	// This must be True if DeviceCompilerAvailableInfo is True.
 	//
 	// Returned type: Bool
 	// Since: 1.2
-	DeviceLinkerAvailable DeviceInfoName = C.CL_DEVICE_LINKER_AVAILABLE
-	// DeviceLocalMemSize is the size of local memory region in bytes. The minimum value is 32 KB for devices
+	DeviceLinkerAvailableInfo DeviceInfoName = C.CL_DEVICE_LINKER_AVAILABLE
+	// DeviceLocalMemSizeInfo is the size of local memory region in bytes. The minimum value is 32 KB for devices
 	// that are not of type DeviceTypeCustom.
 	//
 	// Returned type: Ulong
-	DeviceLocalMemSize DeviceInfoName = C.CL_DEVICE_LOCAL_MEM_SIZE
-	// DeviceLocalMemType is the type of local memory supported.
+	DeviceLocalMemSizeInfo DeviceInfoName = C.CL_DEVICE_LOCAL_MEM_SIZE
+	// DeviceLocalMemTypeInfo is the type of local memory supported.
 	// This can be set to DeviceLocalMemTypeLocal implying dedicated local memory storage such as SRAM, or
 	// DeviceLocalMemTypeGlobal.
 	//
 	// For custom devices, DeviceLocalMemTypeNone can also be returned indicating no local memory support.
 	//
 	// Returned type: DeviceLocalMemTypeEnum
-	DeviceLocalMemType DeviceInfoName = C.CL_DEVICE_LOCAL_MEM_TYPE
-	// DeviceMaxClockFrequency is the clock frequency of the device in MHz. The meaning of this value is
+	DeviceLocalMemTypeInfo DeviceInfoName = C.CL_DEVICE_LOCAL_MEM_TYPE
+	// DeviceMaxClockFrequencyInfo is the clock frequency of the device in MHz. The meaning of this value is
 	// implementation-defined. For devices with multiple clock domains, the clock frequency for any of the clock
 	// domains may be returned. For devices that dynamically change frequency for power or thermal reasons, the
 	// returned clock frequency may be any valid frequency.
@@ -213,98 +215,98 @@ const (
 	// Note: This definition is missing before version 2.2.
 	//
 	// Returned type: Uint
-	DeviceMaxClockFrequency DeviceInfoName = C.CL_DEVICE_MAX_CLOCK_FREQUENCY
-	// DeviceMaxComputeUnits refers to the number of parallel compute units on the OpenCL device.
+	DeviceMaxClockFrequencyInfo DeviceInfoName = C.CL_DEVICE_MAX_CLOCK_FREQUENCY
+	// DeviceMaxComputeUnitsInfo refers to the number of parallel compute units on the OpenCL device.
 	// A work-group executes on a single compute unit. The minimum value is 1.
 	//
 	// Returned type: Uint
-	DeviceMaxComputeUnits DeviceInfoName = C.CL_DEVICE_MAX_COMPUTE_UNITS
-	// DeviceMaxConstantArgs is the maximum number of arguments declared with the __constant qualifier in a kernel.
+	DeviceMaxComputeUnitsInfo DeviceInfoName = C.CL_DEVICE_MAX_COMPUTE_UNITS
+	// DeviceMaxConstantArgsInfo is the maximum number of arguments declared with the __constant qualifier in a kernel.
 	// The minimum value is 8 for devices that are not of type DeviceTypeCustom.
 	//
 	// Returned type: Uint
-	DeviceMaxConstantArgs DeviceInfoName = C.CL_DEVICE_MAX_CONSTANT_ARGS
-	// DeviceMaxConstantBufferSize is the maximum size in bytes of a constant buffer allocation. The minimum value
+	DeviceMaxConstantArgsInfo DeviceInfoName = C.CL_DEVICE_MAX_CONSTANT_ARGS
+	// DeviceMaxConstantBufferSizeInfo is the maximum size in bytes of a constant buffer allocation. The minimum value
 	// is 64 KB for devices that are not of type DeviceTypeCustom.
 	//
 	// Returned type: Ulong
-	DeviceMaxConstantBufferSize DeviceInfoName = C.CL_DEVICE_MAX_CONSTANT_BUFFER_SIZE
-	// DeviceMaxMemAllocSize is the maximum size of memory object allocation in bytes. The minimum value is
-	// max(min(1024 * 1024 * 1024, 1/4th of DeviceGlobalMemSize), 32 * 1024 * 1024)
+	DeviceMaxConstantBufferSizeInfo DeviceInfoName = C.CL_DEVICE_MAX_CONSTANT_BUFFER_SIZE
+	// DeviceMaxMemAllocSizeInfo is the maximum size of memory object allocation in bytes. The minimum value is
+	// max(min(1024 * 1024 * 1024, 1/4th of DeviceGlobalMemSizeInfo), 32 * 1024 * 1024)
 	// for devices that are not of type DeviceTypeCustom.
 	//
 	// Returned type: Ulong
-	DeviceMaxMemAllocSize DeviceInfoName = C.CL_DEVICE_MAX_MEM_ALLOC_SIZE
-	// DeviceMaxParameterSize is the maximum size in bytes of all arguments that can be passed to a kernel.
+	DeviceMaxMemAllocSizeInfo DeviceInfoName = C.CL_DEVICE_MAX_MEM_ALLOC_SIZE
+	// DeviceMaxParameterSizeInfo is the maximum size in bytes of all arguments that can be passed to a kernel.
 	//
 	// The minimum value is 1024 for devices that are not of type DeviceTypeCustom. For this minimum value,
 	// only a maximum of 128 arguments can be passed to a kernel
 	//
 	// Returned type: uintptr
-	DeviceMaxParameterSize DeviceInfoName = C.CL_DEVICE_MAX_PARAMETER_SIZE
-	// DeviceMaxReadImageArgs is the maximum number of image objects arguments of a kernel declared with the read_only
-	// qualifier. The minimum value is 128 if DeviceImageSupport is True, the value is 0 otherwise.
+	DeviceMaxParameterSizeInfo DeviceInfoName = C.CL_DEVICE_MAX_PARAMETER_SIZE
+	// DeviceMaxReadImageArgsInfo is the maximum number of image objects arguments of a kernel declared with the
+	// read_only qualifier. The minimum value is 128 if DeviceImageSupportInfo is True, the value is 0 otherwise.
 	//
 	// Returned type: Uint
-	DeviceMaxReadImageArgs DeviceInfoName = C.CL_DEVICE_MAX_READ_IMAGE_ARGS
-	// DeviceMaxSamplers is the maximum number of samplers that can be used in a kernel.
-	// The minimum value is 16 if DeviceImageSupport is True, the value is 0 otherwise.
+	DeviceMaxReadImageArgsInfo DeviceInfoName = C.CL_DEVICE_MAX_READ_IMAGE_ARGS
+	// DeviceMaxSamplersInfo is the maximum number of samplers that can be used in a kernel.
+	// The minimum value is 16 if DeviceImageSupportInfo is True, the value is 0 otherwise.
 	//
 	// Returned type: Uint
-	DeviceMaxSamplers DeviceInfoName = C.CL_DEVICE_MAX_SAMPLERS
-	// DeviceMaxWorkGroupSize is the maximum number of work-items in a work-group that a device is capable of
+	DeviceMaxSamplersInfo DeviceInfoName = C.CL_DEVICE_MAX_SAMPLERS
+	// DeviceMaxWorkGroupSizeInfo is the maximum number of work-items in a work-group that a device is capable of
 	// executing on a single compute unit, for any given kernel-instance running on the device.
 	// The minimum value is 1. The returned value is an upper limit and will not necessarily maximize performance.
 	// This maximum may be larger than supported by a specific kernel.
 	//
 	// Returned type: uintptr
-	DeviceMaxWorkGroupSize DeviceInfoName = C.CL_DEVICE_MAX_WORK_GROUP_SIZE
-	// DeviceMaxWorkItemDimensions is the maximum dimensions that specify the global and local work-item IDs used by
+	DeviceMaxWorkGroupSizeInfo DeviceInfoName = C.CL_DEVICE_MAX_WORK_GROUP_SIZE
+	// DeviceMaxWorkItemDimensionsInfo is the maximum dimensions that specify the global and local work-item IDs used by
 	// the data parallel execution model. The minimum value is 3 for devices that are not of type DeviceTypeCustom.
 	//
 	// Return type: Uint
-	DeviceMaxWorkItemDimensions DeviceInfoName = C.CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS
-	// DeviceMaxWorkItemSizes is the maximum number of work-items that can be specified in each dimension of the
+	DeviceMaxWorkItemDimensionsInfo DeviceInfoName = C.CL_DEVICE_MAX_WORK_ITEM_DIMENSIONS
+	// DeviceMaxWorkItemSizesInfo is the maximum number of work-items that can be specified in each dimension of the
 	// work-group to EnqueueNDRangeKernel().
-	// Returns N uintptr entries, where N is the value returned by the query for DeviceMaxWorkItemDimensions.
+	// Returns N uintptr entries, where N is the value returned by the query for DeviceMaxWorkItemDimensionsInfo.
 	// The minimum value is (1, 1, 1) for devices that are not of type DeviceTypeCustom.
 	//
 	// Returned type: []uintptr
-	DeviceMaxWorkItemSizes DeviceInfoName = C.CL_DEVICE_MAX_WORK_ITEM_SIZES
-	// DeviceMaxWriteImageArgs is the maximum number of image objects arguments of a kernel declared with the
-	// write_only qualifier. The minimum value is 64 if DeviceImageSupport is True, the value is 0 otherwise.
-	DeviceMaxWriteImageArgs DeviceInfoName = C.CL_DEVICE_MAX_WRITE_IMAGE_ARGS
-	// DeviceMemBaseAddrAlign is the alignment requirement (in bits) for sub-buffer offsets. The minimum value is
+	DeviceMaxWorkItemSizesInfo DeviceInfoName = C.CL_DEVICE_MAX_WORK_ITEM_SIZES
+	// DeviceMaxWriteImageArgsInfo is the maximum number of image objects arguments of a kernel declared with the
+	// write_only qualifier. The minimum value is 64 if DeviceImageSupportInfo is True, the value is 0 otherwise.
+	DeviceMaxWriteImageArgsInfo DeviceInfoName = C.CL_DEVICE_MAX_WRITE_IMAGE_ARGS
+	// DeviceMemBaseAddrAlignInfo is the alignment requirement (in bits) for sub-buffer offsets. The minimum value is
 	// the size (in bits) of the largest OpenCL built-in data type supported by the device
 	// (long16 in FULL profile, long16 or int16 in EMBEDDED profile) for devices that are not of type DeviceTypeCustom.
 	//
 	// Returned type: Uint
-	DeviceMemBaseAddrAlign DeviceInfoName = C.CL_DEVICE_MEM_BASE_ADDR_ALIGN
-	// DeviceName refers to a human-readable string that identifies the device.
+	DeviceMemBaseAddrAlignInfo DeviceInfoName = C.CL_DEVICE_MEM_BASE_ADDR_ALIGN
+	// DeviceNameInfo refers to a human-readable string that identifies the device.
 	//
 	// Returned type: string
-	DeviceName DeviceInfoName = C.CL_DEVICE_NAME
-	// DeviceNativeVectorWidthChar returns the native ISA vector width.
+	DeviceNameInfo DeviceInfoName = C.CL_DEVICE_NAME
+	// DeviceNativeVectorWidthCharInfo returns the native ISA vector width.
 	// The vector width is defined as the number of scalar elements that can be stored in the vector.
 	//
 	// Returned type: Uint
 	// Since: 1.1
-	DeviceNativeVectorWidthChar DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_CHAR
-	// DeviceNativeVectorWidthDouble returns the native ISA vector width.
+	DeviceNativeVectorWidthCharInfo DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_CHAR
+	// DeviceNativeVectorWidthDoubleInfo returns the native ISA vector width.
 	// The vector width is defined as the number of scalar elements that can be stored in the vector.
 	//
 	// If double precision is not supported, this value must be 0.
 	//
 	// Returned type: Uint
 	// Since: 1.1
-	DeviceNativeVectorWidthDouble DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_DOUBLE
-	// DeviceNativeVectorWidthFloat returns the native ISA vector width.
+	DeviceNativeVectorWidthDoubleInfo DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_DOUBLE
+	// DeviceNativeVectorWidthFloatInfo returns the native ISA vector width.
 	// The vector width is defined as the number of scalar elements that can be stored in the vector.
 	//
 	// Returned type: Uint
 	// Since: 1.1
-	DeviceNativeVectorWidthFloat DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_FLOAT
-	// DeviceNativeVectorWidthHalf returns the native ISA vector width.
+	DeviceNativeVectorWidthFloatInfo DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_FLOAT
+	// DeviceNativeVectorWidthHalfInfo returns the native ISA vector width.
 	// The vector width is defined as the number of scalar elements that can be stored in the vector.
 	//
 	// If the cl_khr_fp16 extension is not supported, this value must be 0.
@@ -312,26 +314,26 @@ const (
 	// Returned type: Uint
 	// Since: 1.1
 	// Extension: cl_khr_fp16
-	DeviceNativeVectorWidthHalf DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_HALF
-	// DeviceNativeVectorWidthInt returns the native ISA vector width.
+	DeviceNativeVectorWidthHalfInfo DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_HALF
+	// DeviceNativeVectorWidthIntInfo returns the native ISA vector width.
 	// The vector width is defined as the number of scalar elements that can be stored in the vector.
 	//
 	// Returned type: Uint
 	// Since: 1.1
-	DeviceNativeVectorWidthInt DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_INT
-	// DeviceNativeVectorWidthLong returns the native ISA vector width.
+	DeviceNativeVectorWidthIntInfo DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_INT
+	// DeviceNativeVectorWidthLongInfo returns the native ISA vector width.
 	// The vector width is defined as the number of scalar elements that can be stored in the vector.
 	//
 	// Returned type: Uint
 	// Since: 1.1
-	DeviceNativeVectorWidthLong DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_LONG
-	// DeviceNativeVectorWidthShort returns the native ISA vector width.
+	DeviceNativeVectorWidthLongInfo DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_LONG
+	// DeviceNativeVectorWidthShortInfo returns the native ISA vector width.
 	// The vector width is defined as the number of scalar elements that can be stored in the vector.
 	//
 	// Returned type: Uint
 	// Since: 1.1
-	DeviceNativeVectorWidthShort DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_SHORT
-	// DeviceOpenClCVersion returns the highest fully backwards compatible OpenCL C version supported by the
+	DeviceNativeVectorWidthShortInfo DeviceInfoName = C.CL_DEVICE_NATIVE_VECTOR_WIDTH_SHORT
+	// DeviceOpenClCVersionInfo returns the highest fully backwards compatible OpenCL C version supported by the
 	// compiler for the device. For devices supporting compilation from OpenCL C source, this will return
 	// a version string with the following format:
 	//
@@ -339,38 +341,38 @@ const (
 	//
 	// Returned type: string
 	// Since: 1.1
-	DeviceOpenClCVersion DeviceInfoName = C.CL_DEVICE_OPENCL_C_VERSION
-	// DeviceParentDevice returns the DeviceID of the parent device to which this sub-device belongs.
+	DeviceOpenClCVersionInfo DeviceInfoName = C.CL_DEVICE_OPENCL_C_VERSION
+	// DeviceParentDeviceInfo returns the DeviceID of the parent device to which this sub-device belongs.
 	// If device is a root-level device, a zero value is returned.
 	//
 	// Returned type: DeviceID
 	// Since: 1.2
-	DeviceParentDevice DeviceInfoName = C.CL_DEVICE_PARENT_DEVICE
-	// DevicePartitionAffinityDomain returns the list of supported affinity domains for partitioning the device
-	// using DevicePartitionByAffinityDomain. This is a bit-field.
+	DeviceParentDeviceInfo DeviceInfoName = C.CL_DEVICE_PARENT_DEVICE
+	// DevicePartitionAffinityDomainInfo returns the list of supported affinity domains for partitioning the device
+	// using DevicePartitionByAffinityDomainProperty. This is a bit-field.
 	// If the device does not support any affinity domains, a value of 0 will be returned.
 	//
 	// Returned type: DeviceAffinityDomainFlags
 	// Since: 1.2
-	DevicePartitionAffinityDomain DeviceInfoName = C.CL_DEVICE_PARTITION_AFFINITY_DOMAIN
-	// DevicePartitionMaxSubDevices returns the maximum number of sub-devices that can be created when
+	DevicePartitionAffinityDomainInfo DeviceInfoName = C.CL_DEVICE_PARTITION_AFFINITY_DOMAIN
+	// DevicePartitionMaxSubDevicesInfo returns the maximum number of sub-devices that can be created when
 	// a device is partitioned.
-	// The value returned cannot exceed DeviceMaxComputeUnits.
+	// The value returned cannot exceed DeviceMaxComputeUnitsInfo.
 	//
 	// Returned type: Uint
 	// Since: 1.2
-	DevicePartitionMaxSubDevices DeviceInfoName = C.CL_DEVICE_PARTITION_MAX_SUB_DEVICES
-	// DevicePartitionProperties returns the list of partition types supported by device.
-	// This is an array of uintptr values drawn from the list of DevicePartitionEqually, DevicePartitionByCounts,
-	// and DevicePartitionByAffinityDomain.
+	DevicePartitionMaxSubDevicesInfo DeviceInfoName = C.CL_DEVICE_PARTITION_MAX_SUB_DEVICES
+	// DevicePartitionPropertiesInfo returns the list of partition types supported by device.
+	// This is an array of uintptr values drawn from the list of DevicePartitionEquallyProperty, DevicePartitionByCountsProperty,
+	// and DevicePartitionByAffinityDomainProperty.
 	// If the device cannot be partitioned (i.e. there is no partitioning scheme supported by the device that will
 	// return at least two subdevices), a value of 0 will be returned.
 	//
 	// Returned type: []uintptr
 	// Since: 1.2
-	DevicePartitionProperties DeviceInfoName = C.CL_DEVICE_PARTITION_PROPERTIES
-	// DevicePartitionType returns the properties argument specified in CreateSubDevices() if device is a sub-device.
-	// In the case where the properties argument to CreateSubDevices() is DevicePartitionByAffinityDomain,
+	DevicePartitionPropertiesInfo DeviceInfoName = C.CL_DEVICE_PARTITION_PROPERTIES
+	// DevicePartitionTypeInfo returns the properties argument specified in CreateSubDevices() if device is a sub-device.
+	// In the case where the properties argument to CreateSubDevices() is DevicePartitionByAffinityDomainProperty,
 	// DeviceAffinityDomainNextPartitionable, the affinity domain used to perform the partition will be returned.
 	// This can be one of the following values:
 	//
@@ -386,39 +388,39 @@ const (
 	//
 	// Returned type: []uintptr
 	// Since: 1.2
-	DevicePartitionType DeviceInfoName = C.CL_DEVICE_PARTITION_TYPE
-	// DevicePlatform returns the platform associated with this device.
+	DevicePartitionTypeInfo DeviceInfoName = C.CL_DEVICE_PARTITION_TYPE
+	// DevicePlatformInfo returns the platform associated with this device.
 	//
 	// Returned type: PlatformID
-	DevicePlatform DeviceInfoName = C.CL_DEVICE_PLATFORM
-	// DevicePreferredInteropUserSync is True if the devices preference is for the user to be responsible for
+	DevicePlatformInfo DeviceInfoName = C.CL_DEVICE_PLATFORM
+	// DevicePreferredInteropUserSyncInfo is True if the devices preference is for the user to be responsible for
 	// synchronization, when sharing memory objects between OpenCL and other APIs such as DirectX,
 	// False if the device / implementation has a performant path for performing synchronization of memory object
 	// shared between OpenCL and other APIs such as DirectX.
 	//
 	// Returned type: Bool
 	// Since: 1.2
-	DevicePreferredInteropUserSync DeviceInfoName = C.CL_DEVICE_PREFERRED_INTEROP_USER_SYNC
-	// DevicePreferredVectorWidthChar is the preferred native vector width size for built-in scalar types that
+	DevicePreferredInteropUserSyncInfo DeviceInfoName = C.CL_DEVICE_PREFERRED_INTEROP_USER_SYNC
+	// DevicePreferredVectorWidthCharInfo is the preferred native vector width size for built-in scalar types that
 	// can be put into vectors. The vector width is defined as the number of scalar elements that can be stored
 	// in the vector.
 	//
 	// Returned type: Uint
-	DevicePreferredVectorWidthChar DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_CHAR
-	// DevicePreferredVectorWidthDouble is the preferred native vector width size for built-in scalar types that
+	DevicePreferredVectorWidthCharInfo DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_CHAR
+	// DevicePreferredVectorWidthDoubleInfo is the preferred native vector width size for built-in scalar types that
 	// can be put into vectors. The vector width is defined as the number of scalar elements that can be stored
 	// in the vector.
 	// If double precision is not supported, this value must be 0.
 	//
 	// Returned type: Uint
-	DevicePreferredVectorWidthDouble DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_DOUBLE
-	// DevicePreferredVectorWidthFloat is the preferred native vector width size for built-in scalar types that
+	DevicePreferredVectorWidthDoubleInfo DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_DOUBLE
+	// DevicePreferredVectorWidthFloatInfo is the preferred native vector width size for built-in scalar types that
 	// can be put into vectors. The vector width is defined as the number of scalar elements that can be stored
 	// in the vector.
 	//
 	// Returned type: Uint
-	DevicePreferredVectorWidthFloat DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_FLOAT
-	// DevicePreferredVectorWidthHalf is the preferred native vector width size for built-in scalar types that
+	DevicePreferredVectorWidthFloatInfo DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_FLOAT
+	// DevicePreferredVectorWidthHalfInfo is the preferred native vector width size for built-in scalar types that
 	// can be put into vectors. The vector width is defined as the number of scalar elements that can be stored
 	// in the vector.
 	// If the cl_khr_fp16 extension is not supported, this value must be 0.
@@ -426,32 +428,32 @@ const (
 	// Returned type: Uint
 	// Since: 1.1
 	// Extension: cl_khr_fp16
-	DevicePreferredVectorWidthHalf DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_HALF
-	// DevicePreferredVectorWidthInt is the preferred native vector width size for built-in scalar types that
+	DevicePreferredVectorWidthHalfInfo DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_HALF
+	// DevicePreferredVectorWidthIntInfo is the preferred native vector width size for built-in scalar types that
 	// can be put into vectors. The vector width is defined as the number of scalar elements that can be stored
 	// in the vector.
 	//
 	// Returned type: Uint
-	DevicePreferredVectorWidthInt DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_INT
-	// DevicePreferredVectorWidthLong is the preferred native vector width size for built-in scalar types that
+	DevicePreferredVectorWidthIntInfo DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_INT
+	// DevicePreferredVectorWidthLongInfo is the preferred native vector width size for built-in scalar types that
 	// can be put into vectors. The vector width is defined as the number of scalar elements that can be stored
 	// in the vector.
 	//
 	// Returned type: Uint
-	DevicePreferredVectorWidthLong DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_LONG
-	// DevicePreferredVectorWidthShort is the preferred native vector width size for built-in scalar types that
+	DevicePreferredVectorWidthLongInfo DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_LONG
+	// DevicePreferredVectorWidthShortInfo is the preferred native vector width size for built-in scalar types that
 	// can be put into vectors. The vector width is defined as the number of scalar elements that can be stored
 	// in the vector.
 	//
 	// Returned type: Uint
-	DevicePreferredVectorWidthShort DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_SHORT
-	// DevicePrintfBufferSize is the maximum size in bytes of the internal buffer that holds the output of printf
+	DevicePreferredVectorWidthShortInfo DeviceInfoName = C.CL_DEVICE_PREFERRED_VECTOR_WIDTH_SHORT
+	// DevicePrintfBufferSizeInfo is the maximum size in bytes of the internal buffer that holds the output of printf
 	// calls from a kernel. The minimum value for the FULL profile is 1 MB.
 	//
 	// Returned type: uintptr
 	// Since: 1.2
-	DevicePrintfBufferSize DeviceInfoName = C.CL_DEVICE_PRINTF_BUFFER_SIZE
-	// DeviceProfile is the OpenCL profile string. Returns the profile name supported by the device.
+	DevicePrintfBufferSizeInfo DeviceInfoName = C.CL_DEVICE_PRINTF_BUFFER_SIZE
+	// DeviceProfileInfo is the OpenCL profile string. Returns the profile name supported by the device.
 	// The profile name returned can be one of the following strings:
 	//
 	// "FULL_PROFILE" - if the device supports the OpenCL specification (functionality defined as part of the core
@@ -460,17 +462,17 @@ const (
 	// "EMBEDDED_PROFILE" - if the device supports the OpenCL embedded profile.
 	//
 	// Returned type: string
-	DeviceProfile DeviceInfoName = C.CL_DEVICE_PROFILE
-	// DeviceProfilingTimerResolution describes the resolution of device timer. This is measured in nanoseconds.
+	DeviceProfileInfo DeviceInfoName = C.CL_DEVICE_PROFILE
+	// DeviceProfilingTimerResolutionInfo describes the resolution of device timer. This is measured in nanoseconds.
 	//
 	// Returned type: uintptr
-	DeviceProfilingTimerResolution DeviceInfoName = C.CL_DEVICE_PROFILING_TIMER_RESOLUTION
-	// DeviceQueueProperties describes the command-queue properties supported by the device. This is a bit-field
+	DeviceProfilingTimerResolutionInfo DeviceInfoName = C.CL_DEVICE_PROFILING_TIMER_RESOLUTION
+	// DeviceQueuePropertiesInfo describes the command-queue properties supported by the device. This is a bit-field
 	// that describes one or more of the following values: QueueOutOfOrderExecModeEnable, QueueProfilingEnable.
 	//
 	// Returned type: CommandQueuePropertiesFlags
-	DeviceQueueProperties DeviceInfoName = C.CL_DEVICE_QUEUE_PROPERTIES
-	// DeviceReferenceCount returns the device reference count. If the device is a root-level device,
+	DeviceQueuePropertiesInfo DeviceInfoName = C.CL_DEVICE_QUEUE_PROPERTIES
+	// DeviceReferenceCountInfo returns the device reference count. If the device is a root-level device,
 	// a reference count of one is returned.
 	//
 	// Note: The reference count returned should be considered immediately stale. It is unsuitable for general
@@ -478,37 +480,37 @@ const (
 	//
 	// Returned type: Uint
 	// Since: 1.2
-	DeviceReferenceCount DeviceInfoName = C.CL_DEVICE_REFERENCE_COUNT
-	// DeviceSingleFpConfig describes single precision floating-point capability of the device. This is a bit-field.
+	DeviceReferenceCountInfo DeviceInfoName = C.CL_DEVICE_REFERENCE_COUNT
+	// DeviceSingleFpConfigInfo describes single precision floating-point capability of the device. This is a bit-field.
 	//
 	// Returned type: DeviceFpConfigFlags
-	DeviceSingleFpConfig DeviceInfoName = C.CL_DEVICE_SINGLE_FP_CONFIG
-	// DeviceType is the type or types of the OpenCL device.
+	DeviceSingleFpConfigInfo DeviceInfoName = C.CL_DEVICE_SINGLE_FP_CONFIG
+	// DeviceTypeInfo is the type or types of the OpenCL device.
 	//
 	// Returned type: DeviceTypeFlags
-	DeviceType DeviceInfoName = C.CL_DEVICE_TYPE
-	// DeviceVendor refers to a human-readable string that identifies the vendor of the device.
+	DeviceTypeInfo DeviceInfoName = C.CL_DEVICE_TYPE
+	// DeviceVendorInfo refers to a human-readable string that identifies the vendor of the device.
 	//
 	// Returned type: string
-	DeviceVendor DeviceInfoName = C.CL_DEVICE_VENDOR
-	// DeviceVendorID is a unique device vendor identifier.
+	DeviceVendorInfo DeviceInfoName = C.CL_DEVICE_VENDOR
+	// DeviceVendorIDInfo is a unique device vendor identifier.
 	//
 	// Returned type: Uint
-	DeviceVendorID DeviceInfoName = C.CL_DEVICE_VENDOR_ID
-	// DeviceVersion is an OpenCL version string. Returns the OpenCL version supported by the device.
+	DeviceVendorIDInfo DeviceInfoName = C.CL_DEVICE_VENDOR_ID
+	// DeviceVersionInfo is an OpenCL version string. Returns the OpenCL version supported by the device.
 	// This version string has the following format:
 	//
 	// OpenCL<space><major_version.minor_version><space><vendor-specific information>
 	//
 	// Returned type: string
-	DeviceVersion DeviceInfoName = C.CL_DEVICE_VERSION
-	// DriverVersion specifies the OpenCL software driver version string. Follows a vendor-specific format.
+	DeviceVersionInfo DeviceInfoName = C.CL_DEVICE_VERSION
+	// DriverVersionInfo specifies the OpenCL software driver version string. Follows a vendor-specific format.
 	//
 	// Returned type: string
-	DriverVersion DeviceInfoName = C.CL_DRIVER_VERSION
+	DriverVersionInfo DeviceInfoName = C.CL_DRIVER_VERSION
 )
 
-// DeviceFpConfigFlags are used to determine the DeviceSingleFpConfig and DeviceDoubleFpConfig with DeviceInfo().
+// DeviceFpConfigFlags are used to determine the DeviceSingleFpConfigInfo and DeviceDoubleFpConfigInfo with DeviceInfo().
 type DeviceFpConfigFlags C.cl_device_fp_config
 
 const (
@@ -536,7 +538,7 @@ const (
 	FpCorrectlyRoundedDivideSqrt DeviceFpConfigFlags = C.CL_FP_CORRECTLY_ROUNDED_DIVIDE_SQRT
 )
 
-// DeviceExecCapabilitiesFlags are used to determine the DeviceExecutionCapabilities with DeviceInfo().
+// DeviceExecCapabilitiesFlags are used to determine the DeviceExecutionCapabilitiesInfo with DeviceInfo().
 type DeviceExecCapabilitiesFlags C.cl_device_exec_capabilities
 
 const (
@@ -546,7 +548,7 @@ const (
 	ExecNativeKernel DeviceExecCapabilitiesFlags = C.CL_EXEC_NATIVE_KERNEL
 )
 
-// DeviceMemCacheTypeEnum is used to determine the DeviceGlobalMemCacheType with DeviceInfo().
+// DeviceMemCacheTypeEnum is used to determine the DeviceGlobalMemCacheTypeInfo with DeviceInfo().
 type DeviceMemCacheTypeEnum C.cl_device_mem_cache_type
 
 // These are the possible values for DeviceMemCacheTypeEnum. They are slightly reworded compared to the original
@@ -557,7 +559,7 @@ const (
 	DeviceMemCacheReadWrite DeviceMemCacheTypeEnum = C.CL_READ_WRITE_CACHE
 )
 
-// DeviceLocalMemTypeEnum is used to determine the DeviceLocalMemType with DeviceInfo().
+// DeviceLocalMemTypeEnum is used to determine the DeviceLocalMemTypeInfo with DeviceInfo().
 type DeviceLocalMemTypeEnum C.cl_device_local_mem_type
 
 // These are the possible values for DeviceLocalMemTypeEnum. They are slightly reworded compared to the original
@@ -566,15 +568,6 @@ const (
 	DeviceLocalMemTypeNone   DeviceLocalMemTypeEnum = C.CL_NONE
 	DeviceLocalMemTypeLocal  DeviceLocalMemTypeEnum = C.CL_LOCAL
 	DeviceLocalMemTypeGlobal DeviceLocalMemTypeEnum = C.CL_GLOBAL
-)
-
-// CommandQueuePropertiesFlags is used to determine DeviceQueueProperties with DeviceInfo().
-type CommandQueuePropertiesFlags C.cl_command_queue_properties
-
-// These are the possible values for CommandQueuePropertiesFlags.
-const (
-	QueueOutOfOrderExecModeEnable CommandQueuePropertiesFlags = C.CL_QUEUE_OUT_OF_ORDER_EXEC_MODE_ENABLE
-	QueueProfilingEnable          CommandQueuePropertiesFlags = C.CL_QUEUE_PROFILING_ENABLE
 )
 
 // DeviceInfo queries specific information about a device.
@@ -613,33 +606,33 @@ func DeviceInfoString(id DeviceID, paramName DeviceInfoName) (string, error) {
 }
 
 const (
-	// DevicePartitionEqually requests to split the aggregate device into as many smaller aggregate devices as
+	// DevicePartitionEquallyProperty requests to split the aggregate device into as many smaller aggregate devices as
 	// can be created, each containing N compute units. The value N is passed as the value accompanying this property.
-	// If N does not divide evenly into DeviceMaxComputeUnits, then the remaining compute units are not used.
+	// If N does not divide evenly into DeviceMaxComputeUnitsInfo, then the remaining compute units are not used.
 	//
 	// Use PartitionedEqually() for convenience.
 	//
 	// Property value type: Uint
 	// Since: 1.2
-	DevicePartitionEqually uintptr = C.CL_DEVICE_PARTITION_EQUALLY
-	// DevicePartitionByCounts is followed by a list of compute unit counts terminated with 0 or
-	// DevicePartitionByCountsListEnd. For each non-zero count M in the list, a sub-device is created with M compute
+	DevicePartitionEquallyProperty uintptr = C.CL_DEVICE_PARTITION_EQUALLY
+	// DevicePartitionByCountsProperty is followed by a list of compute unit counts terminated with 0 or
+	// DevicePartitionByCountsListEndProperty. For each non-zero count M in the list, a sub-device is created with M compute
 	// units in it.
 	//
-	// The number of non-zero count entries in the list may not exceed DevicePartitionMaxSubDevices.
+	// The number of non-zero count entries in the list may not exceed DevicePartitionMaxSubDevicesInfo.
 	//
-	// The total number of compute units specified may not exceed DeviceMaxComputeUnits.
+	// The total number of compute units specified may not exceed DeviceMaxComputeUnitsInfo.
 	//
 	// Use PartitionedByCounts() for convenience.
 	//
 	// Property value type: Uint
 	// Since: 1.2
-	DevicePartitionByCounts uintptr = C.CL_DEVICE_PARTITION_BY_COUNTS
-	// DevicePartitionByCountsListEnd terminates the property value list started by DevicePartitionByCounts.
+	DevicePartitionByCountsProperty uintptr = C.CL_DEVICE_PARTITION_BY_COUNTS
+	// DevicePartitionByCountsListEndProperty terminates the property value list started by DevicePartitionByCountsProperty.
 	//
 	// Since: 1.2
-	DevicePartitionByCountsListEnd uintptr = C.CL_DEVICE_PARTITION_BY_COUNTS_LIST_END
-	// DevicePartitionByAffinityDomain splits the device into smaller aggregate devices containing one or more
+	DevicePartitionByCountsListEndProperty uintptr = C.CL_DEVICE_PARTITION_BY_COUNTS_LIST_END
+	// DevicePartitionByAffinityDomainProperty splits the device into smaller aggregate devices containing one or more
 	// compute units that all share part of a cache hierarchy. The value accompanying this property may be drawn
 	// from the constants of DeviceAffinityDomainFlags.
 	//
@@ -647,28 +640,28 @@ const (
 	//
 	// Property value type: DeviceAffinityDomainFlags
 	// Since: 1.2
-	DevicePartitionByAffinityDomain uintptr = C.CL_DEVICE_PARTITION_BY_AFFINITY_DOMAIN
+	DevicePartitionByAffinityDomainProperty uintptr = C.CL_DEVICE_PARTITION_BY_AFFINITY_DOMAIN
 )
 
 // DevicePartitionProperty is one entry of properties which are taken into account when creating sub-devices
 // with CreateSubDevices().
 type DevicePartitionProperty []uintptr
 
-// PartitionedEqually is a convenience function to handle the DevicePartitionEqually property.
+// PartitionedEqually is a convenience function to create a valid DevicePartitionEquallyProperty.
 // Use it in combination with CreateSubDevices().
 func PartitionedEqually(units uint) DevicePartitionProperty {
-	return DevicePartitionProperty{DevicePartitionEqually, uintptr(units)}
+	return DevicePartitionProperty{DevicePartitionEquallyProperty, uintptr(units)}
 }
 
-// PartitionedByCounts is a convenience function to handle the DevicePartitionByCounts property.
+// PartitionedByCounts is a convenience function to create a valid DevicePartitionByCountsProperty.
 // Use it in combination with CreateSubDevices().
 func PartitionedByCounts(units []uint) DevicePartitionProperty {
 	values := make(DevicePartitionProperty, 0, len(units)+2)
-	values = append(values, DevicePartitionByCounts)
+	values = append(values, DevicePartitionByCountsProperty)
 	for _, unit := range units {
 		values = append(values, uintptr(unit))
 	}
-	values = append(values, DevicePartitionByCountsListEnd)
+	values = append(values, DevicePartitionByCountsListEndProperty)
 	return values
 }
 
@@ -705,16 +698,16 @@ const (
 	// in the order NUMA, L4, L3, L2, L1, and partition the device into sub-devices comprised of compute units that
 	// share memory subsystems at this level.
 	//
-	// Determine what happened by calling DeviceInfo() with DevicePartitionType on the sub-devices.
+	// Determine what happened by calling DeviceInfo() with DevicePartitionTypeInfo on the sub-devices.
 	//
 	// Since: 1.2
 	DeviceAffinityDomainNextPartitionable DeviceAffinityDomainFlags = C.CL_DEVICE_AFFINITY_DOMAIN_NEXT_PARTITIONABLE
 )
 
-// PartitionedByAffinityDomain is a convenience function to handle the DevicePartitionByAffinityDomain property.
+// PartitionedByAffinityDomain is a convenience function to create a valid DevicePartitionByAffinityDomainProperty.
 // Use it in combination with CreateSubDevices().
 func PartitionedByAffinityDomain(domain DeviceAffinityDomainFlags) DevicePartitionProperty {
-	return DevicePartitionProperty{DevicePartitionByAffinityDomain, uintptr(domain)}
+	return DevicePartitionProperty{DevicePartitionByAffinityDomainProperty, uintptr(domain)}
 }
 
 // CreateSubDevices creates an array of sub-devices that each reference a non-intersecting set of compute units within
