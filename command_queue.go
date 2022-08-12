@@ -21,7 +21,7 @@ func (cq CommandQueue) String() string {
 	return fmt.Sprintf("0x%X", uintptr(cq))
 }
 
-// CommandQueuePropertiesFlags is used to determine DeviceQueueProperties with DeviceInfo(), as well as
+// CommandQueuePropertiesFlags is used to determine DeviceQueuePropertiesInfo with DeviceInfo(), as well as
 // properties for CreateCommandQueue().
 type CommandQueuePropertiesFlags C.cl_command_queue_properties
 

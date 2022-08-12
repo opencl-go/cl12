@@ -127,7 +127,7 @@ func PlatformInfoString(id PlatformID, paramName PlatformInfoName) (string, erro
 // platform is not a valid platform.
 // A non-nil return value for ExtensionFunctionAddressForPlatform() does not guarantee that an extension function
 // is actually supported by the platform. The application must also make a corresponding query using
-// PlatformInfo(platform, PlatformExtensionsInfo, ...) or DeviceInfo(device, DeviceExtensions, ...) to determine
+// PlatformInfo(platform, PlatformExtensionsInfo, ...) or DeviceInfo(device, DeviceExtensionsInfo, ...) to determine
 // if an extension is supported by the OpenCL implementation.
 //
 // See also: https://registry.khronos.org/OpenCL/sdk/1.2/docs/man/xhtml/clGetExtensionFunctionAddressForPlatform.html
