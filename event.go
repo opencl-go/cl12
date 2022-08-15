@@ -91,7 +91,7 @@ const (
 	// Note: The reference count returned should be considered immediately stale. It is unsuitable for
 	// general use in applications. This feature is provided for identifying memory leaks.
 	//
-	// Returned type: Uint
+	// Returned type: uint32
 	EventReferenceCountInfo EventInfoName = C.CL_EVENT_REFERENCE_COUNT
 	// EventCommandExecutionStatusInfo returns the execution status of the command identified by event.
 	//
@@ -198,7 +198,7 @@ const (
 // Raw strings are with a terminating NUL character.
 //
 // See also: https://registry.khronos.org/OpenCL/sdk/1.2/docs/man/xhtml/clGetEventInfo.html
-func EventInfo(event Event, paramName EventInfoName, paramSize uint, paramValue unsafe.Pointer) (uint, error) {
+func EventInfo(event Event, paramName EventInfoName, paramSize uintptr, paramValue unsafe.Pointer) (uintptr, error) {
 	sizeReturn := C.size_t(0)
 	status := C.clGetEventInfo(
 		event.handle(),
@@ -209,7 +209,7 @@ func EventInfo(event Event, paramName EventInfoName, paramSize uint, paramValue 
 	if status != C.CL_SUCCESS {
 		return 0, StatusError(status)
 	}
-	return uint(sizeReturn), nil
+	return uintptr(sizeReturn), nil
 }
 
 // RetainEvent increments the event reference count.
@@ -272,7 +272,7 @@ const (
 // Raw strings are with a terminating NUL character.
 //
 // See also: https://registry.khronos.org/OpenCL/sdk/1.2/docs/man/xhtml/clGetEventProfilingInfo.html
-func EventProfilingInfo(event Event, paramName EventProfilingInfoName, paramSize uint, paramValue unsafe.Pointer) (uint, error) {
+func EventProfilingInfo(event Event, paramName EventProfilingInfoName, paramSize uintptr, paramValue unsafe.Pointer) (uintptr, error) {
 	sizeReturn := C.size_t(0)
 	status := C.clGetEventProfilingInfo(
 		event.handle(),
@@ -283,7 +283,7 @@ func EventProfilingInfo(event Event, paramName EventProfilingInfoName, paramSize
 	if status != C.CL_SUCCESS {
 		return 0, StatusError(status)
 	}
-	return uint(sizeReturn), nil
+	return uintptr(sizeReturn), nil
 }
 
 // SetEventCallback registers a user callback function for a specific command execution status.
