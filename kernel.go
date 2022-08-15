@@ -417,6 +417,29 @@ func EnqueueNDRangeKernel(commandQueue CommandQueue, kernel Kernel, workDimensio
 	return nil
 }
 
+// EnqueueTask enqueues a command to execute a kernel, using a single work-item, on a device.
+//
+// EnqueueTask() is equivalent to calling EnqueueNDRangeKernel() with one WorkDimension that has
+// GlobalOffset = 0, GlobalSize = 1, and LocalSize = 1.
+//
+// See also: https://registry.khronos.org/OpenCL/sdk/1.2/docs/man/xhtml/clEnqueueTask.html
+func EnqueueTask(commandQueue CommandQueue, kernel Kernel, waitList []Event, event *Event) error {
+	var rawWaitList unsafe.Pointer
+	if len(waitList) > 0 {
+		rawWaitList = unsafe.Pointer(&waitList[0])
+	}
+	status := C.clEnqueueTask(
+		commandQueue.handle(),
+		kernel.handle(),
+		C.cl_uint(len(waitList)),
+		(*C.cl_event)(rawWaitList),
+		(*C.cl_event)(unsafe.Pointer(event)))
+	if status != C.CL_SUCCESS {
+		return StatusError(status)
+	}
+	return nil
+}
+
 // EnqueueNativeKernel enqueues a command to execute a native Go function not compiled using the OpenCL compiler.
 //
 // The provided callback function will receive pointers to global memory that represents the provided MemObject
