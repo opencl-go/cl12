@@ -101,7 +101,7 @@ const (
 	// Note: The reference count returned should be considered immediately stale. It is unsuitable for
 	// general use in applications. This feature is provided for identifying memory leaks.
 	//
-	// Returned type: Uint
+	// Returned type: uint32
 	QueueReferenceCountInfo CommandQueueInfoName = C.CL_QUEUE_REFERENCE_COUNT
 	// QueuePropertiesInfo returns the currently specified properties for the command-queue.
 	// These properties are specified by the value associated with the QueuePropertiesProperty passed in as

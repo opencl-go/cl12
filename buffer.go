@@ -9,7 +9,7 @@ import (
 // CreateBuffer creates a buffer object.
 //
 // See also: https://registry.khronos.org/OpenCL/sdk/1.2/docs/man/xhtml/clCreateBuffer.html
-func CreateBuffer(context Context, flags MemFlags, size uint, hostPtr unsafe.Pointer) (MemObject, error) {
+func CreateBuffer(context Context, flags MemFlags, size int, hostPtr unsafe.Pointer) (MemObject, error) {
 	var status C.cl_int
 	mem := C.clCreateBuffer(
 		context.handle(),
