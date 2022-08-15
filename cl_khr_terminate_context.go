@@ -1,3 +1,5 @@
+//go:build !darwin
+
 package cl12
 
 import (

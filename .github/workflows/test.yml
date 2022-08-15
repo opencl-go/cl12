@@ -9,8 +9,8 @@ on:
 permissions:
   contents: read
 jobs:
-  test:
-    name: test
+  test-linux:
+    name: test-linux
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/setup-go@v3
@@ -21,5 +21,15 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y opencl-headers ocl-icd-opencl-dev
+      - name: Run tests
+        run: go test -race ./...
+  test-mac:
+    name: test-mac
+    runs-on: macos-latest
+    steps:
+      - uses: actions/setup-go@v3
+        with:
+          go-version: 1.18
+      - uses: actions/checkout@v3
       - name: Run tests
         run: go test -race ./...
