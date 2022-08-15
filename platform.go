@@ -1,6 +1,7 @@
 package cl12
 
-// #cgo LDFLAGS: -lOpenCL
+// #cgo !darwin LDFLAGS: -lOpenCL
+// #cgo darwin LDFLAGS: -framework OpenCL
 // #include "api.h"
 import "C"
 import (
