@@ -134,7 +134,7 @@ const (
 // Raw strings are with a terminating NUL character.
 //
 // See also: https://registry.khronos.org/OpenCL/sdk/1.2/docs/man/xhtml/clGetSamplerInfo.html
-func SamplerInfo(sampler Sampler, paramName ContextInfoName, paramSize uint, paramValue unsafe.Pointer) (uint, error) {
+func SamplerInfo(sampler Sampler, paramName ContextInfoName, paramSize uintptr, paramValue unsafe.Pointer) (uintptr, error) {
 	sizeReturn := C.size_t(0)
 	status := C.clGetSamplerInfo(
 		sampler.handle(),
@@ -145,5 +145,5 @@ func SamplerInfo(sampler Sampler, paramName ContextInfoName, paramSize uint, par
 	if status != C.CL_SUCCESS {
 		return 0, StatusError(status)
 	}
-	return uint(sizeReturn), nil
+	return uintptr(sizeReturn), nil
 }
