@@ -5,6 +5,7 @@
 [![GoReportCard](https://goreportcard.com/badge/github.com/opencl-go/cl12)](https://goreportcard.com/report/github.com/opencl-go/cl12)
 [![License](https://img.shields.io/github/license/opencl-go/cl12.svg)](https://github.com/opencl-go/cl12/blob/main/LICENSE)
 [![OpenCL 1.2](https://img.shields.io/badge/OpenCL-1.2-green.svg)][opencl-api]
+![Maintenance](https://img.shields.io/maintenance/no/2024)
 
 This library provides a complete wrapper for the OpenCL 1.2 API.
 If you require a different API level, refer to [the opencl-go project][opencl-go] to see which versions are available.
